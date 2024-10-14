@@ -3,12 +3,14 @@ from qwen_vl_utils import process_vision_info
 import gradio as gr
 from timeit import default_timer as timer
 # from PIL import Image
-import torch
+import torch, os
 
+models_dir =os.path.join(os.path.dirname(os.path.realpath(__file__)), "models")
 # default: Load the model on the available device(s)
-model_path = r"S:\LLM\Qwen2-VL-7B-Instruct"
-# model_path = r"S:\LLM\Qwen2-VL-7B-Instruct-AWQ"
-# model_path = r"S:\LLM\Qwen2-VL-7B-Instruct-GPTQ-Int4"
+model_name = "Qwen2-VL-7B-Instruct"
+# model_name = "Qwen2-VL-7B-Instruct-AWQ"
+# model_name = "Qwen2-VL-7B-Instruct-GPTQ-Int4"
+model_path = os.path.join(models_dir, model_name)
 
 
 model = Qwen2VLForConditionalGeneration.from_pretrained(
